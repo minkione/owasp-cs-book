@@ -1,0 +1,16 @@
+language: python
+python:
+  - "3.5"
+  - "3.5-dev"  
+  - "3.6"
+  - "3.6-dev" 
+# Cannot use "3.7-dev" and "3.8-dev" for now into build matrix
+# See https://docs.travis-ci.com/user/languages/python/#Development-releases-support
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y wkhtmltopdf
+  - wkhtmltopdf --version
+install:
+  - pip install -r requirements.txt
+script:
+  - python book-generator.py
