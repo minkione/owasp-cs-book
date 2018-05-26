@@ -91,7 +91,7 @@ def convert_cs_to_pdf_file(cs_identifier, skip_cs_in_draft=True):
         cs_html += "</span></h1></body></html>"
         # Generate the PDF from the cleaned HTML
         options = {}
-        pdf_file = WORK_TEMP_FOLDER + "/" + hashlib.md5(cs_identifier.encode("utf-8")).hexdigest() + ".pdf"
+        pdf_file = os.getcwd() + "/" + WORK_TEMP_FOLDER + "/" + hashlib.md5(cs_identifier.encode("utf-8")).hexdigest() + ".pdf"
         # Use "force" mode because there an issue with rendering from HTML string: Link cannot be resolved event if network access is OK
         try:
             pdfkit.from_string(input=cs_html, output_path=pdf_file, options=options)
