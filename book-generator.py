@@ -20,6 +20,7 @@ import pdfkit
 import os
 import colorama
 import shutil
+import datetime
 from tqdm import tqdm
 from bs4 import BeautifulSoup
 from PyPDF2 import PdfFileMerger
@@ -32,7 +33,7 @@ CS_TEMPLATE_URL = "https://www.owasp.org/index.php?title=%s&printable=no"
 WORK_TEMP_FOLDER = "work"
 
 # CS ignored PDF because the current format is not compatible :(
-CS_SKIPPED_LIST = ["Access_Control_Cheat_Sheet", "AppSensor_Cheat_Sheet"]
+CS_SKIPPED_LIST = ["Access_Control_Cheat_Sheet", "AppSensor_Cheat_Sheet", "Secure_Coding_Cheat_Sheet"]
 
 
 def is_draft_cs(html):
@@ -110,6 +111,8 @@ def merge_all_cs_pdf_files(cs_pdf_files_paths, merged_pdf_file_name="book.pdf"):
     merger = PdfFileMerger()
     for cs_pdf_files_path in cs_pdf_files_paths:
         merger.append(cs_pdf_files_path, import_bookmarks=False)
+    metadatas = {"/Title": "OWASP Cheat Sheet Series book", "/Author": "OWASP Cheat Sheet Series project", "/Producer": "Created on " + '{0:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now())}
+    merger.addMetadata(metadatas)
     merger.write(merged_pdf_file_name)
 
 
@@ -125,12 +128,13 @@ if __name__ == "__main__":
     print(colored("[*] Convert each CS to a PDF file...", "cyan", attrs=[]))
     pdf_files = []
     for i in tqdm(range(0, len(cs_list))):
-        pdf_file = convert_cs_to_pdf_file(cs_list[i])
-        if pdf_file is not None:
-            pdf_files.append(pdf_file)
+        pdf_file_item = convert_cs_to_pdf_file(cs_list[i])
+        if pdf_file_item is not None:
+            pdf_files.append(pdf_file_item)
     print(colored("[*] Merge all PDF files to a single one...", "cyan", attrs=[]))
     if len(pdf_files) > 0:
         book_name = "owasp-cs-book.pdf"
+        pdf_files = ["cover-page.pdf"] + pdf_files
         merge_all_cs_pdf_files(pdf_files, merged_pdf_file_name=book_name)
         print(colored("[*] CS books generated in file '%s'" % book_name, "green", attrs=["bold"]))
     else:

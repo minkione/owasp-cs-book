@@ -1,3 +1,5 @@
-*.pdf
 work/
 .idea/
+~$ver-page.docx
+owasp-cs-book.pdf
+*.wbk

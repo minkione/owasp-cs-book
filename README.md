@@ -7,6 +7,8 @@ This project provide a utility script to build a PDF book gathering all Cheat Sh
 After several requests to OWASP people using different channels (email, slack channels, mailing-list), it was not possible to known if the OWASP wiki has a feature (or plan to add it) to obtain a PDF version of a wiki article.
 I have then decided (in last resort) to build the PDF version of a page from the HTML content of the page with all the caveats that it will bring.
 
+Several iterations on this project will be needed in order to reach an optimal version of the generated book...
+
 # Requirements
 
 ## Python
