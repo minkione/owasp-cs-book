@@ -8,10 +8,12 @@ python:
 # See https://docs.travis-ci.com/user/languages/python/#Development-releases-support
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y wkhtmltopdf
+  - sudo apt-get install -y wkhtmltopdf xvfb
   - wkhtmltopdf --version
 install:
   - pip install -r requirements.txt
+  - sudo chmod +x setup-for-exec-no-x-server.sh
+  - sudo ./setup-for-exec-no-x-server.sh
 script:
   - python book-generator.py
   - ls -rtl /home/travis/build/righettod/owasp-cs-book/work/*
