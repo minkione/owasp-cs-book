@@ -16,4 +16,4 @@ script:
   - python book-generator.py
   - pwd
   - ls -l
-  - ls -l /home/travis/build/righettod/owasp-cs-book
+  - ls -l /home/travis/build/righettod/owasp-cs-book/work
