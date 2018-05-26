@@ -95,7 +95,8 @@ def convert_cs_to_pdf_file(cs_identifier, skip_cs_in_draft=True):
         # Use "force" mode because there an issue with rendering from HTML string: Link cannot be resolved event if network access is OK
         try:
             pdfkit.from_string(input=cs_html, output_path=pdf_file, options=options)
-        except:
+        except Exception as e:
+            print(str(e))
             pass
     return pdf_file
 
