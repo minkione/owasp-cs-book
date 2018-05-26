@@ -3,7 +3,8 @@ python:
   - "3.5"
   - "3.5-dev"  
   - "3.6"
-  - "3.6-dev" 
+  - "3.6-dev"
+  - "3.7-dev"
 # Cannot use "3.7-dev" and "3.8-dev" for now into build matrix 
 # See https://docs.travis-ci.com/user/languages/python/#Development-releases-support
 before_install:
