@@ -16,4 +16,3 @@ install:
   - sudo ./setup-for-exec-no-x-server.sh
 script:
   - python book-generator.py
-  - ls -rtl /home/travis/build/righettod/owasp-cs-book/work/*
