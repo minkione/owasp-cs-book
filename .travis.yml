@@ -1,10 +1,11 @@
 language: python
 python:
   - "3.5"
-  - "3.5-dev"  
   - "3.6"
+  - "3.5-dev"
   - "3.6-dev"
   - "3.7-dev"
+  - "3.8-dev"
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y wkhtmltopdf xvfb
