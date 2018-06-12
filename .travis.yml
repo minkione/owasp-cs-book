@@ -28,7 +28,6 @@ deploy:
   body: "Generation of the book from the CI job using the MASTER branch."
   draft: true
   overwrite: true
-  target_commitish: $TRAVIS_COMMIT
   file: "owasp-cs-book.pdf"
   skip_cleanup: true
   on:
