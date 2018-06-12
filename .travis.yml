@@ -26,8 +26,9 @@ deploy:
   api_key: ${github_personal_access_token}
   name: CI_BUILD_RELEASE
   body: "Generation of the book from the CI job using the MASTER branch."
-  draft: true
+  prerelease: true
   overwrite: true
+  target_commitish: $TRAVIS_COMMIT
   file: "owasp-cs-book.pdf"
   skip_cleanup: true
   on:
