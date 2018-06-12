@@ -31,5 +31,3 @@ deploy:
   target_commitish: $TRAVIS_COMMIT
   file: "owasp-cs-book.pdf"
   skip_cleanup: true
-  on:
-    branch: master
