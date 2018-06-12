@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/righettod/owasp-cs-book.svg?branch=master)](https://travis-ci.org/righettod/owasp-cs-book)
+
+[![Requirements Status](https://requires.io/github/righettod/owasp-cs-book/requirements.svg?branch=master)](https://requires.io/github/righettod/owasp-cs-book/requirements/?branch=master)
+
+[![Known Vulnerabilities](https://snyk.io/test/github/righettod/owasp-cs-book/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/righettod/owasp-cs-book?targetFile=requirements.txt)
+
 # Objective
 
 This project provide a utility script to build a PDF book gathering all Cheat Sheets from the project [OWASP Cheat Sheet Series](https://www.owasp.org/index.php/OWASP_Cheat_Sheet_Series).
@@ -8,6 +14,10 @@ After several requests to OWASP people using different channels (email, slack ch
 I have then decided (in last resort) to build the PDF version of a page from the HTML content of the page with all the caveats that it will bring.
 
 Several iterations on this project will be needed in order to reach an optimal version of the generated book...
+
+# Book publishing
+
+A version of the book is generated every week by the TravisCI job and the PDF file is published in the [RELEASE](https://github.com/righettod/owasp-cs-book/releases) section of the project.
 
 # Requirements
 
