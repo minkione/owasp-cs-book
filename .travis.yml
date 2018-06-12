@@ -14,7 +14,7 @@ script:
 before_deploy:
       # See https://github.com/oliexdev/openScale/pull/121
       # Used to overwrite the GH release content because we use the GH Release feature
-      # as a distribution channel for Draft regularly built by the CI
+      # as a distribution channel for DRAFT regularly built by the CI
       - git config --local user.name "TravisCI"
       - git config --local user.email "build@travis-ci.com"
       - git tag -f CI_BUILD_RELEASE
