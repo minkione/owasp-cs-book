@@ -15,3 +15,13 @@ install:
   - sudo ./setup-for-exec-no-x-server.sh
 script:
   - python book-generator.py
+before_deploy:
+      # Set up git user name and tag this commit
+      - git config --local user.name "TravisCI"
+      - git config --local user.email "build@travis-ci.com"
+      - git tag "CI_BUILD_RELEASE"
+deploy:
+  provider: releases
+  api_key: ${github_personal_access_token}
+  file: "owasp-cs-book.pdf"
+  skip_cleanup: true
