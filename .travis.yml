@@ -12,16 +12,24 @@ install:
 script:
   - python book-generator.py
 before_deploy:
-      # Set up git user name and tag this commit
+      # See https://github.com/oliexdev/openScale/pull/121
+      # Used to overwite the GH release content because we use the GH Release feature
+      # as a distribution channel for Draft regularly built by the CI
       - git config --local user.name "TravisCI"
       - git config --local user.email "build@travis-ci.com"
-      - git tag "CI_BUILD_RELEASE"
+      - git tag -f CI_BUILD_RELEASE
+      - git remote add gh https://${TRAVIS_REPO_SLUG%/*}:${github_personal_access_token}@github.com/${TRAVIS_REPO_SLUG}.git
+      - git push -f gh CI_BUILD_RELEASE
+      - git remote remove gh
 deploy:
   provider: releases
-  name: DRAFT
-  body: "Generation of the book from the CI job using the master branch."
+  api_key: ${github_personal_access_token}
+  name: CI_BUILD_RELEASE
+  body: "Generation of the book from the CI job using the MASTER branch."
   draft: true
   overwrite: true
-  api_key: ${github_personal_access_token}
+  target_commitish: $TRAVIS_COMMIT
   file: "owasp-cs-book.pdf"
   skip_cleanup: true
+  on:
+    branch: master
