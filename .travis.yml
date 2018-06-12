@@ -1,9 +1,5 @@
 language: python
 python:
-  - "3.5"
-  - "3.6"
-  - "3.5-dev"
-  - "3.6-dev"
   - "3.7-dev"
 before_install:
   - sudo apt-get -qq update
@@ -22,6 +18,10 @@ before_deploy:
       - git tag "CI_BUILD_RELEASE"
 deploy:
   provider: releases
+  name: DRAFT
+  body: "Generation of the book from the CI job using the master branch."
+  draft: true
+  overwrite: true
   api_key: ${github_personal_access_token}
   file: "owasp-cs-book.pdf"
   skip_cleanup: true
